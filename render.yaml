@@ -1,6 +1,6 @@
 services:
   - type: web
-    name: koko-heart-bot
+    name: kokoheartbot
     env: python
     startCommand: python app.py
     plan: free
