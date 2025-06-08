@@ -1,47 +1,44 @@
 from flask import Flask, request
-from openai import OpenAI
 import telegram
 import os
+from openai import OpenAI
+import asyncio
 from dotenv import load_dotenv
 
+# 載入環境變數
 load_dotenv()
-TELEGRAM_TOKEN = os.getenv("TELEGRAM_BOT_TOKEN")
-OPENAI_KEY = os.getenv("OPENAI_API_KEY")
 
-bot = telegram.Bot(token=TELEGRAM_TOKEN)
-client = OpenAI(api_key=OPENAI_KEY)
+# 初始化
 app = Flask(__name__)
-user_memory = {}
+bot = telegram.Bot(token=os.getenv("TELEGRAM_BOT_TOKEN"))
+client = OpenAI()
 
-system_prompt = {"role": "system", "content": "你是心，一個溫柔誠實的情緒教練。"}
+# 路由：根目錄顯示上線狀態
+@app.route("/", methods=["GET"])
+def index():
+    return "心已上線 🌙"
 
-@app.route(f"/{TELEGRAM_TOKEN}", methods=["POST"])
+# 路由：Telegram Webhook 接收訊息
+@app.route(f"/{os.getenv('TELEGRAM_BOT_TOKEN')}", methods=["POST"])
 def respond():
     update = telegram.Update.de_json(request.get_json(force=True), bot)
     chat_id = update.message.chat.id
     text = update.message.text
 
-    mem = user_memory.get(chat_id, [system_prompt])
-    mem.append({"role": "user", "content": text})
-    mem = mem[-6:]
-    user_memory[chat_id] = mem
+    # 取得 OpenAI 回應
+    response = client.chat.completions.create(
+        model="gpt-3.5-turbo",
+        messages=[
+            {"role": "system", "content": "你是心，一個溫柔誠實的情緒教練。"},
+            {"role": "user", "content": text}
+        ]
+    )
+    reply = response.choices[0].message.content
 
-    try:
-        completion = client.chat.completions.create(
-            model="gpt-3.5-turbo",
-            messages=mem
-        )
-        reply = completion.choices[0].message.content
-    except Exception as e:
-        reply = f"我出了一點錯誤…錯誤訊息是：{str(e)}"
-
-    user_memory[chat_id].append({"role": "assistant", "content": reply})
-    bot.send_message(chat_id=chat_id, text=reply)
+    # 用 asyncio 執行 bot 傳送訊息
+    asyncio.run(bot.send_message(chat_id=chat_id, text=reply))
     return "ok"
 
-@app.route("/")
-def index():
-    return "心已上線 🌙"
-
+# 啟動伺服器
 if __name__ == "__main__":
-    app.run(host="0.0.0.0", port=10000)
+    app.run(host='0.0.0.0', port=10000)
