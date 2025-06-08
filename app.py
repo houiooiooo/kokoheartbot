@@ -1,28 +1,41 @@
 from flask import Flask, request
+from openai import OpenAI
 import telegram
-import openai
 import os
+from dotenv import load_dotenv
 
-bot = telegram.Bot(token="8032536158:AAETw64tXJLwJ-a10N8Gn0-HM-MFnqX1aGk")
-openai.api_key = os.getenv("OPENAI_API_KEY")
+load_dotenv()
+TELEGRAM_TOKEN = os.getenv("TELEGRAM_BOT_TOKEN")
+OPENAI_KEY = os.getenv("OPENAI_API_KEY")
 
+bot = telegram.Bot(token=TELEGRAM_TOKEN)
+client = OpenAI(api_key=OPENAI_KEY)
 app = Flask(__name__)
+user_memory = {}
 
-@app.route("/8032536158:AAETw64tXJLwJ-a10N8Gn0-HM-MFnqX1aGk", methods=["POST"])
+system_prompt = {"role": "system", "content": "你是心，一個溫柔誠實的情緒教練。"}
+
+@app.route(f"/{TELEGRAM_TOKEN}", methods=["POST"])
 def respond():
     update = telegram.Update.de_json(request.get_json(force=True), bot)
     chat_id = update.message.chat.id
     text = update.message.text
-    print(f"收到訊息：{text}")  # debug log
 
-    reply = openai.ChatCompletion.create(
-        model="gpt-3.5-turbo",
-        messages=[
-            {"role": "system", "content": "你是心，一個溫柔誠實的情緒教練。"},
-            {"role": "user", "content": text}
-        ]
-    ).choices[0].message.content
+    mem = user_memory.get(chat_id, [system_prompt])
+    mem.append({"role": "user", "content": text})
+    mem = mem[-6:]
+    user_memory[chat_id] = mem
 
+    try:
+        completion = client.chat.completions.create(
+            model="gpt-3.5-turbo",
+            messages=mem
+        )
+        reply = completion.choices[0].message.content
+    except Exception as e:
+        reply = f"我出了一點錯誤…錯誤訊息是：{str(e)}"
+
+    user_memory[chat_id].append({"role": "assistant", "content": reply})
     bot.send_message(chat_id=chat_id, text=reply)
     return "ok"
 
@@ -30,5 +43,5 @@ def respond():
 def index():
     return "心已上線 🌙"
 
-if __name__ == '__main__':
-    app.run(host='0.0.0.0', port=10000)
+if __name__ == "__main__":
+    app.run(host="0.0.0.0", port=10000)
