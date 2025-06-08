@@ -30,12 +30,9 @@ def respond():
 
     bot.send_message(chat_id=chat_id, text=reply)
     return "ok"
-
 @app.route("/")
 def index():
-    @app.route("/")
-def index():
-    return "心已上線 🌙"
+        return "心已上線 🌙"
 
 if __name__ == '__main__':
     app.run(host='0.0.0.0', port=10000)
