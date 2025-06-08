@@ -33,4 +33,5 @@ def respond():
 
 @app.route("/")
 def index():
-    return "心已上線 🌙"
+    return "心已上線 🌙"if __name__ == '__main__':
+    app.run(host='0.0.0.0', port=10000)
