@@ -42,3 +42,16 @@ def respond():
 # 啟動伺服器
 if __name__ == "__main__":
     app.run(host='0.0.0.0', port=10000)
+print("🔑 OpenAI API Key:", os.getenv("OPENAI_API_KEY"))
+@app.route("/test")
+def test_gpt():
+    try:
+        response = client.chat.completions.create(
+            model="gpt-3.5-turbo",
+            messages=[
+                {"role": "user", "content": "Hello, GPT!"}
+            ]
+        )
+        return response.choices[0].message.content
+    except Exception as e:
+        return f"錯誤：{e}"
