@@ -1,0 +1,889 @@
+<!DOCTYPE html>
+<html lang="zh-Hant">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Counter 9 Tattoo 九號櫃檯</title>
+  <meta name="description" content="Counter 9 Tattoo 九號櫃檯｜Tattoo, Piercing, Event Space." />
+  <style>
+    :root {
+      --bg: #070707;
+      --panel: #0f0f0f;
+      --line: rgba(255,255,255,.12);
+      --soft: rgba(255,255,255,.72);
+      --muted: rgba(255,255,255,.52);
+      --cream: #efe7d6;
+      --red: #a42d21;
+      --gold: #d0a34a;
+      --amber: #f0b13d;
+      --green: #6d7d4a;
+    }
+
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    html { scroll-behavior: smooth; }
+    body {
+      background:
+        linear-gradient(180deg, rgba(164,45,33,.08), transparent 18%),
+        linear-gradient(90deg, rgba(240,177,61,.03), transparent 30%),
+        var(--bg);
+      color: var(--cream);
+      font-family: Arial, "Helvetica Neue", Helvetica, "PingFang TC", "Microsoft JhengHei", sans-serif;
+      line-height: 1.6;
+      overflow-x: hidden;
+    }
+
+    a { color: inherit; text-decoration: none; }
+    img { display: block; max-width: 100%; }
+
+    .wrap { width: min(1320px, 92vw); margin: 0 auto; }
+
+    .topbar {
+      position: sticky;
+      top: 0;
+      z-index: 100;
+      backdrop-filter: blur(10px);
+      background: rgba(7,7,7,.82);
+      border-bottom: 1px solid rgba(255,255,255,.08);
+    }
+
+    .nav {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      gap: 20px;
+      padding: 16px 0;
+    }
+
+    .brand {
+      display: flex;
+      align-items: center;
+      gap: 14px;
+      min-width: 0;
+    }
+
+    .brand-mark {
+      display: grid;
+      grid-template-columns: repeat(4, 40px);
+      gap: 6px;
+      flex-shrink: 0;
+    }
+
+    .brand-mark span {
+      width: 40px;
+      height: 40px;
+      border: 1px solid rgba(239,231,214,.55);
+      border-radius: 999px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 22px;
+      line-height: 1;
+      background: linear-gradient(180deg, rgba(255,255,255,.04), rgba(255,255,255,.01));
+      box-shadow: inset 0 0 14px rgba(255,255,255,.03);
+    }
+
+    .brand-copy { min-width: 0; }
+    .brand-copy .eyebrow {
+      font-size: 11px;
+      color: var(--gold);
+      letter-spacing: 2.5px;
+      text-transform: uppercase;
+      margin-bottom: 3px;
+    }
+    .brand-copy h1 {
+      font-size: 17px;
+      letter-spacing: 1.5px;
+      white-space: nowrap;
+      overflow: hidden;
+      text-overflow: ellipsis;
+    }
+    .brand-copy p {
+      color: var(--muted);
+      font-size: 12px;
+      margin-top: 2px;
+    }
+
+    .nav-links {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: flex-end;
+      gap: 14px;
+      font-size: 12px;
+      letter-spacing: 1.6px;
+      text-transform: uppercase;
+      color: var(--soft);
+    }
+
+    .nav-links a {
+      padding: 6px 0;
+      border-bottom: 1px solid transparent;
+      transition: .2s ease;
+    }
+    .nav-links a:hover {
+      color: var(--amber);
+      border-color: var(--amber);
+    }
+
+    .warning-bar {
+      border-top: 1px solid rgba(240,177,61,.3);
+      border-bottom: 1px solid rgba(240,177,61,.3);
+      background:
+        repeating-linear-gradient(
+          -45deg,
+          rgba(240,177,61,.13) 0 12px,
+          rgba(164,45,33,.18) 12px 24px
+        );
+      color: #161616;
+      overflow: hidden;
+    }
+
+    .warning-track {
+      display: flex;
+      gap: 40px;
+      white-space: nowrap;
+      padding: 8px 0;
+      font-size: 12px;
+      font-weight: 700;
+      letter-spacing: 2.2px;
+      text-transform: uppercase;
+      color: #f4e7cb;
+    }
+
+    .hero {
+      padding: 26px 0 36px;
+    }
+
+    .hero-grid {
+      display: grid;
+      grid-template-columns: 1.28fr .72fr;
+      gap: 18px;
+      min-height: 82vh;
+    }
+
+    .hero-main,
+    .hero-side .card,
+    .section-block,
+    .artist-card,
+    .info-card,
+    .gallery-card {
+      border: 1px solid var(--line);
+      background: linear-gradient(180deg, rgba(255,255,255,.03), rgba(255,255,255,.01));
+      box-shadow: 0 22px 60px rgba(0,0,0,.26);
+    }
+
+    .hero-main {
+      position: relative;
+      overflow: hidden;
+      min-height: 720px;
+      background: #111;
+    }
+
+    .hero-main img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      filter: grayscale(.15) brightness(.34) contrast(1.05);
+      transform: scale(1.03);
+    }
+
+    .hero-main::before {
+      content: "";
+      position: absolute;
+      inset: 0;
+      background:
+        linear-gradient(180deg, rgba(0,0,0,.08), rgba(0,0,0,.78)),
+        linear-gradient(90deg, rgba(164,45,33,.16), transparent 30%),
+        radial-gradient(circle at 85% 10%, rgba(240,177,61,.16), transparent 25%);
+      z-index: 1;
+    }
+
+    .hero-panel-lines {
+      position: absolute;
+      inset: 16px;
+      border: 1px solid rgba(255,255,255,.09);
+      z-index: 2;
+      pointer-events: none;
+    }
+
+    .hero-overlay {
+      position: absolute;
+      inset: 0;
+      z-index: 3;
+      display: flex;
+      flex-direction: column;
+      justify-content: flex-end;
+      padding: 34px;
+    }
+
+    .system-row {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 10px;
+      margin-bottom: 18px;
+    }
+
+    .system-tag {
+      padding: 7px 10px;
+      border: 1px solid rgba(240,177,61,.4);
+      color: var(--amber);
+      font-size: 11px;
+      letter-spacing: 1.8px;
+      text-transform: uppercase;
+      background: rgba(0,0,0,.28);
+    }
+
+    .hero-code {
+      color: rgba(239,231,214,.56);
+      font-size: 11px;
+      letter-spacing: 1.8px;
+      text-transform: uppercase;
+      margin-bottom: 10px;
+    }
+
+    .hero-title {
+      font-size: clamp(58px, 10vw, 140px);
+      line-height: .88;
+      letter-spacing: 3px;
+      text-transform: uppercase;
+      max-width: 900px;
+    }
+
+    .hero-sub {
+      margin-top: 12px;
+      font-size: 15px;
+      letter-spacing: 2px;
+      text-transform: uppercase;
+      color: rgba(239,231,214,.82);
+      max-width: 820px;
+    }
+
+    .hero-desc {
+      margin-top: 16px;
+      max-width: 700px;
+      color: var(--soft);
+      font-size: 15px;
+    }
+
+    .cta-row {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 12px;
+      margin-top: 24px;
+    }
+
+    .btn {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      min-height: 46px;
+      padding: 0 18px;
+      font-size: 12px;
+      letter-spacing: 2px;
+      text-transform: uppercase;
+      border: 1px solid rgba(239,231,214,.24);
+      transition: .22s ease;
+    }
+
+    .btn.primary {
+      background: var(--red);
+      border-color: rgba(164,45,33,.8);
+      color: #fff5ea;
+    }
+    .btn.primary:hover { background: #bf3628; }
+
+    .btn.secondary {
+      color: var(--amber);
+      border-color: rgba(240,177,61,.4);
+      background: rgba(0,0,0,.18);
+    }
+    .btn.secondary:hover {
+      background: rgba(240,177,61,.1);
+    }
+
+    .hero-side {
+      display: grid;
+      gap: 18px;
+      grid-template-rows: 1fr 1fr;
+    }
+
+    .hero-side .card {
+      padding: 22px;
+      position: relative;
+      overflow: hidden;
+      min-height: 240px;
+    }
+
+    .card-label {
+      color: var(--amber);
+      font-size: 11px;
+      letter-spacing: 2px;
+      text-transform: uppercase;
+      margin-bottom: 10px;
+    }
+
+    .card h3 {
+      font-size: 30px;
+      line-height: 1;
+      letter-spacing: 1.5px;
+      text-transform: uppercase;
+      margin-bottom: 12px;
+    }
+
+    .card p {
+      color: var(--soft);
+      font-size: 14px;
+    }
+
+    .info-lines {
+      display: grid;
+      gap: 10px;
+      margin-top: 16px;
+    }
+
+    .info-lines div {
+      padding-top: 10px;
+      border-top: 1px solid rgba(255,255,255,.08);
+      font-size: 13px;
+      color: rgba(239,231,214,.84);
+    }
+
+    .section {
+      padding: 0 0 22px;
+    }
+
+    .section-block {
+      padding: 24px;
+      margin-bottom: 18px;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .section-top {
+      display: flex;
+      justify-content: space-between;
+      align-items: end;
+      gap: 18px;
+      margin-bottom: 18px;
+      flex-wrap: wrap;
+    }
+
+    .section-code {
+      color: var(--amber);
+      font-size: 11px;
+      letter-spacing: 2px;
+      text-transform: uppercase;
+      margin-bottom: 8px;
+    }
+
+    .section-title {
+      font-size: clamp(32px, 5vw, 64px);
+      line-height: .92;
+      text-transform: uppercase;
+      letter-spacing: 2px;
+    }
+
+    .section-copy {
+      max-width: 520px;
+      color: var(--soft);
+      font-size: 14px;
+    }
+
+    .work-grid {
+      display: grid;
+      grid-template-columns: 1.1fr .9fr .9fr;
+      gap: 14px;
+    }
+
+    .gallery-card {
+      position: relative;
+      min-height: 270px;
+      overflow: hidden;
+      background: #121212;
+    }
+
+    .gallery-card img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      filter: brightness(.78);
+      transition: transform .5s ease;
+    }
+    .gallery-card:hover img { transform: scale(1.03); }
+
+    .gallery-card::after {
+      content: "";
+      position: absolute;
+      inset: 0;
+      background: linear-gradient(180deg, rgba(0,0,0,.02), rgba(0,0,0,.58));
+    }
+
+    .gallery-caption {
+      position: absolute;
+      left: 16px;
+      right: 16px;
+      bottom: 14px;
+      z-index: 2;
+    }
+
+    .gallery-caption strong {
+      display: block;
+      font-size: 14px;
+      letter-spacing: 1.4px;
+      text-transform: uppercase;
+      margin-bottom: 4px;
+    }
+
+    .gallery-caption span {
+      color: rgba(239,231,214,.72);
+      font-size: 12px;
+    }
+
+    .artists-grid {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 14px;
+    }
+
+    .artist-card {
+      background: linear-gradient(180deg, rgba(255,255,255,.03), rgba(255,255,255,.01));
+      overflow: hidden;
+    }
+
+    .artist-image {
+      position: relative;
+      aspect-ratio: 4/5;
+      background: #111;
+      overflow: hidden;
+    }
+
+    .artist-image img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      filter: brightness(.82);
+    }
+
+    .artist-no {
+      position: absolute;
+      left: 12px;
+      top: 12px;
+      padding: 6px 8px;
+      border: 1px solid rgba(240,177,61,.36);
+      color: var(--amber);
+      font-size: 11px;
+      letter-spacing: 1.5px;
+      background: rgba(0,0,0,.36);
+      text-transform: uppercase;
+    }
+
+    .artist-info {
+      padding: 16px;
+    }
+
+    .artist-role {
+      color: rgba(239,231,214,.54);
+      font-size: 11px;
+      letter-spacing: 1.8px;
+      text-transform: uppercase;
+      margin-bottom: 6px;
+    }
+
+    .artist-info h3 {
+      font-size: 28px;
+      letter-spacing: 1.4px;
+      text-transform: uppercase;
+      margin-bottom: 8px;
+      line-height: 1;
+    }
+
+    .artist-info p {
+      color: var(--soft);
+      font-size: 14px;
+      min-height: 46px;
+    }
+
+    .artist-info a {
+      display: inline-block;
+      margin-top: 14px;
+      color: var(--amber);
+      font-size: 12px;
+      letter-spacing: 1.8px;
+      text-transform: uppercase;
+    }
+
+    .space-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 14px;
+      margin-bottom: 14px;
+    }
+
+    .info-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 14px;
+    }
+
+    .info-card {
+      padding: 22px;
+      background: linear-gradient(180deg, rgba(255,255,255,.03), rgba(255,255,255,.01));
+    }
+
+    .pill-row {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 8px;
+      margin-top: 14px;
+    }
+
+    .pill {
+      padding: 7px 10px;
+      border: 1px solid rgba(239,231,214,.14);
+      color: rgba(239,231,214,.78);
+      font-size: 11px;
+      letter-spacing: 1.4px;
+      text-transform: uppercase;
+    }
+
+    .contact-list {
+      display: grid;
+      gap: 10px;
+      margin-top: 12px;
+    }
+
+    .contact-item {
+      display: flex;
+      justify-content: space-between;
+      gap: 16px;
+      padding-bottom: 10px;
+      border-bottom: 1px solid rgba(255,255,255,.08);
+      font-size: 14px;
+      color: var(--soft);
+    }
+
+    .contact-item strong {
+      color: var(--cream);
+      letter-spacing: .5px;
+    }
+
+    footer {
+      padding: 20px 0 42px;
+      color: rgba(239,231,214,.42);
+      font-size: 12px;
+      letter-spacing: 1.4px;
+      text-transform: uppercase;
+    }
+
+    @media (max-width: 1080px) {
+      .hero-grid,
+      .work-grid,
+      .artists-grid,
+      .space-grid,
+      .info-grid {
+        grid-template-columns: 1fr 1fr;
+      }
+      .hero-grid { grid-template-columns: 1fr; min-height: auto; }
+      .hero-side { grid-template-columns: 1fr 1fr; grid-template-rows: auto; }
+      .hero-main { min-height: 70vh; }
+      .work-grid .gallery-card:first-child { grid-column: 1 / -1; }
+      .artists-grid { grid-template-columns: 1fr 1fr; }
+    }
+
+    @media (max-width: 720px) {
+      .nav { align-items: flex-start; flex-direction: column; }
+      .brand-mark { grid-template-columns: repeat(4, 32px); }
+      .brand-mark span { width: 32px; height: 32px; font-size: 18px; }
+      .nav-links { justify-content: flex-start; }
+      .warning-track { font-size: 10px; gap: 20px; }
+      .hero-main { min-height: 64vh; }
+      .hero-overlay { padding: 20px; }
+      .hero-title { font-size: clamp(40px, 13vw, 78px); }
+      .section-block { padding: 18px; }
+      .hero-side,
+      .work-grid,
+      .artists-grid,
+      .space-grid,
+      .info-grid { grid-template-columns: 1fr; }
+      .contact-item { flex-direction: column; gap: 4px; }
+    }
+  </style>
+</head>
+<body>
+  <header class="topbar">
+    <div class="wrap nav">
+      <div class="brand">
+        <div class="brand-mark" aria-hidden="true">
+          <span>九</span><span>號</span><span>櫃</span><span>檯</span>
+        </div>
+        <div class="brand-copy">
+          <div class="eyebrow">Counter 9 Tattoo Studio</div>
+          <h1>Counter 9 Tattoo 九號櫃檯</h1>
+          <p>刺青與穿洞店 / Taipei, Taiwan</p>
+        </div>
+      </div>
+      <nav class="nav-links">
+        <a href="#work">Work</a>
+        <a href="#artists">Artists</a>
+        <a href="#space">Space</a>
+        <a href="#contact">Contact</a>
+      </nav>
+    </div>
+  </header>
+
+  <div class="warning-bar">
+    <div class="wrap warning-track">
+      <span>Counter 9 Tattoo Studio</span>
+      <span>American Core / Young Energy / Vintage Signal</span>
+      <span>Tattoo / Piercing / Event Space</span>
+      <span>Xinzhuang Base</span>
+      <span>Counter 9 Tattoo Studio</span>
+      <span>American Core / Young Energy / Vintage Signal</span>
+    </div>
+  </div>
+
+  <main class="hero wrap">
+    <div class="hero-grid">
+      <section class="hero-main">
+        <img src="img/logo2.png" alt="Counter 9 Tattoo 九號櫃檯" />
+        <div class="hero-panel-lines"></div>
+        <div class="hero-overlay">
+          <div class="system-row">
+            <div class="system-tag">Neo Xinzhuang Base</div>
+            <div class="system-tag">Tattoo / Piercing</div>
+            <div class="system-tag">3F Event Space</div>
+          </div>
+          <div class="hero-code">Sector-01 / Counter 9 Interface / Entry Point</div>
+          <div class="hero-title">Counter 9<br />Tattoo</div>
+          <div class="hero-sub">American Tattoo Core × Young Underground Space × Signboard Identity</div>
+          <p class="hero-desc">
+            這版先直接把你說的感覺做出來：不是普通刺青店官網，也不是動漫 cosplay，而是把「新世紀福音戰士的警示 / 系統 / 基地感」混進「美式刺青店的招牌感與硬度」。
+          </p>
+          <div class="cta-row">
+            <a class="btn primary" href="https://www.instagram.com/counter_9_tattoo/" target="_blank" rel="noreferrer">Enter Studio IG</a>
+            <a class="btn secondary" href="#artists">Meet Artists</a>
+          </div>
+        </div>
+      </section>
+
+      <aside class="hero-side">
+        <div class="card">
+          <div class="card-label">Studio Data</div>
+          <h3>Base Profile</h3>
+          <p>九號櫃檯不是單一刺青師網站。它是有主師父骨架、有店感、有聚集性、也有活動空間的現場。</p>
+          <div class="info-lines">
+            <div>2F / 刺青與穿洞店</div>
+            <div>3F / 半室內草地活動空間</div>
+            <div>新北市新莊區西盛街 441 號 2F</div>
+          </div>
+        </div>
+
+        <div class="card">
+          <div class="card-label">Design Signal</div>
+          <h3>Current Mix</h3>
+          <p>70% 美式刺青的硬度與招牌感，30% EVA 式警示系統語法。先抓住第一印象，再讓你慢慢指揮我修到準。</p>
+          <div class="pill-row">
+            <span class="pill">Black</span>
+            <span class="pill">Old Red</span>
+            <span class="pill">Signal Gold</span>
+            <span class="pill">Warning UI</span>
+          </div>
+        </div>
+      </aside>
+    </div>
+  </main>
+
+  <div class="wrap section" id="work">
+    <section class="section-block">
+      <div class="section-top">
+        <div>
+          <div class="section-code">Section-02 / Tattoo Work</div>
+          <h2 class="section-title">Works</h2>
+        </div>
+        <p class="section-copy">先用幾張強圖打出店的骨架。正式版你再指定各自代表作，我就能把主次與圖的性格排得更狠。</p>
+      </div>
+      <div class="work-grid">
+        <article class="gallery-card">
+          <img src="img/ant2.jpg" alt="Tattoo work 1" />
+          <div class="gallery-caption">
+            <strong>Main Signal</strong>
+            <span>張蟻太主軸先站第一格</span>
+          </div>
+        </article>
+        <article class="gallery-card">
+          <img src="img/ant1.jpg" alt="Tattoo work 2" />
+          <div class="gallery-caption">
+            <strong>American Core</strong>
+            <span>老派基底 / 年輕呈現</span>
+          </div>
+        </article>
+        <article class="gallery-card">
+          <img src="img/5.jpg" alt="Tattoo work 3" />
+          <div class="gallery-caption">
+            <strong>Shop Energy</strong>
+            <span>不是精品，是有場景感的店</span>
+          </div>
+        </article>
+      </div>
+    </section>
+
+    <section class="section-block" id="artists">
+      <div class="section-top">
+        <div>
+          <div class="section-code">Section-03 / Artists</div>
+          <h2 class="section-title">Artists</h2>
+        </div>
+        <p class="section-copy">這區先做出集體工作室的結構。之後你可以一個個指揮我：誰要更兇、誰要更乾淨、誰要更怪，我再調。</p>
+      </div>
+      <div class="artists-grid">
+        <article class="artist-card">
+          <div class="artist-image">
+            <img src="img/ant1.jpg" alt="Ant" />
+            <div class="artist-no">Artist-01</div>
+          </div>
+          <div class="artist-info">
+            <div class="artist-role">Main Artist</div>
+            <h3>Ant</h3>
+            <p>主師父 / 美式刺青主軸。這一格之後可以再做得更像招牌人物。</p>
+            <a href="https://www.instagram.com/ant_tattooer/" target="_blank" rel="noreferrer">@ant_tattooer</a>
+          </div>
+        </article>
+
+        <article class="artist-card">
+          <div class="artist-image">
+            <img src="img/1.jpg" alt="Sunnii" />
+            <div class="artist-no">Artist-02</div>
+          </div>
+          <div class="artist-info">
+            <div class="artist-role">Tattoo Artist</div>
+            <h3>Sunnii</h3>
+            <p>這裡先卡位。之後你給我她的調性，我把她從「有名字」變成「有性格」。</p>
+            <a href="https://www.instagram.com/sunnii36/" target="_blank" rel="noreferrer">@sunnii36</a>
+          </div>
+        </article>
+
+        <article class="artist-card">
+          <div class="artist-image">
+            <img src="img/3.jpg" alt="Hundred" />
+            <div class="artist-no">Artist-03</div>
+          </div>
+          <div class="artist-info">
+            <div class="artist-role">Tattoo Artist</div>
+            <h3>Hundred</h3>
+            <p>保留你個人的差異，但收進 Counter 9 的主體，不讓它像另一個站突然插進來。</p>
+            <a href="https://www.instagram.com/houiooiooo/" target="_blank" rel="noreferrer">@houiooiooo</a>
+          </div>
+        </article>
+
+        <article class="artist-card">
+          <div class="artist-image">
+            <img src="img/6.jpg" alt="Vinn" />
+            <div class="artist-no">Artist-04</div>
+          </div>
+          <div class="artist-info">
+            <div class="artist-role">Tattoo Artist</div>
+            <h3>Vinn</h3>
+            <p>這區未來也可加一行很準的定位話，不要只是名字與 IG。</p>
+            <a href="https://www.instagram.com/vinn_yo1923/" target="_blank" rel="noreferrer">@vinn_yo1923</a>
+          </div>
+        </article>
+      </div>
+    </section>
+
+    <section class="section-block" id="space">
+      <div class="section-top">
+        <div>
+          <div class="section-code">Section-04 / Space</div>
+          <h2 class="section-title">Studio & Event Space</h2>
+        </div>
+        <p class="section-copy">九號櫃檯值得被記住的不只是作品，還有這裡是個基地。2F 是刺青店，3F 是場地，這件事要被講清楚。</p>
+      </div>
+
+      <div class="space-grid">
+        <article class="gallery-card">
+          <img src="img/2.jpg" alt="Studio space 1" />
+          <div class="gallery-caption">
+            <strong>2F Studio</strong>
+            <span>工作台、陳設、人的痕跡</span>
+          </div>
+        </article>
+        <article class="gallery-card">
+          <img src="img/4.jpg" alt="Studio space 2" />
+          <div class="gallery-caption">
+            <strong>3F Space</strong>
+            <span>草地活動空間 / 合作 / 聚會</span>
+          </div>
+        </article>
+      </div>
+
+      <div class="info-grid">
+        <div class="info-card">
+          <div class="card-label">2F / Tattoo & Piercing</div>
+          <h3>Store Floor</h3>
+          <p>這裡不是過度包裝的高級店，而是有招牌感、有朋友感、有生活感的真實工作室。</p>
+          <div class="pill-row">
+            <span class="pill">Tattoo</span>
+            <span class="pill">Piercing</span>
+            <span class="pill">Shop Life</span>
+          </div>
+        </div>
+        <div class="info-card">
+          <div class="card-label">3F / Collaboration Zone</div>
+          <h3>Grass Space</h3>
+          <p>開放品牌合作、活動企劃與場地租用。這個區塊之後完全可以再拉成獨立頁面。</p>
+          <div class="pill-row">
+            <span class="pill">Brand Collab</span>
+            <span class="pill">Event Planning</span>
+            <span class="pill">Space Rental</span>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="section-block" id="contact">
+      <div class="section-top">
+        <div>
+          <div class="section-code">Section-05 / Contact</div>
+          <h2 class="section-title">Book / Contact / Visit</h2>
+        </div>
+        <p class="section-copy">現在先把入口做乾淨。之後你如果要，我再幫你把 LINE、表單、Google Maps、預約流程整合進來。</p>
+      </div>
+
+      <div class="info-grid">
+        <div class="info-card">
+          <div class="card-label">Studio Contact</div>
+          <h3>Counter 9 Tattoo</h3>
+          <div class="contact-list">
+            <div class="contact-item"><strong>Instagram</strong><span>@counter_9_tattoo</span></div>
+            <div class="contact-item"><strong>Address</strong><span>242 新北市新莊區西盛街 441 號 2F</span></div>
+            <div class="contact-item"><strong>Type</strong><span>刺青與穿洞店</span></div>
+            <div class="contact-item"><strong>City</strong><span>Taipei, Taiwan</span></div>
+          </div>
+          <div class="cta-row">
+            <a class="btn primary" href="https://www.instagram.com/counter_9_tattoo/" target="_blank" rel="noreferrer">Studio IG</a>
+          </div>
+        </div>
+
+        <div class="info-card">
+          <div class="card-label">Artist Accounts</div>
+          <h3>Artist IG</h3>
+          <div class="contact-list">
+            <div class="contact-item"><strong>Ant</strong><span>@ant_tattooer</span></div>
+            <div class="contact-item"><strong>Sunnii</strong><span>@sunnii36</span></div>
+            <div class="contact-item"><strong>Hundred</strong><span>@houiooiooo</span></div>
+            <div class="contact-item"><strong>Vinn</strong><span>@vinn_yo1923</span></div>
+          </div>
+          <div class="pill-row">
+            <span class="pill">GitHub Ready</span>
+            <span class="pill">site / img Structure</span>
+            <span class="pill">Local Images</span>
+          </div>
+        </div>
+      </div>
+    </section>
+  </div>
+
+  <footer>
+    <div class="wrap">Counter 9 Tattoo Studio / Prototype V2 / EVA × American Tattoo Direction</div>
+  </footer>
+</body>
+</html>
