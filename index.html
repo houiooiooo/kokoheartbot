@@ -3,8 +3,12 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Counter 9 Tattoo 九號櫃檯</title>
-  <meta name="description" content="Counter 9 Tattoo 九號櫃檯｜2F刺青、3F 草地活動空間。美式刺青、復古玩具、cult 片放映。" />
+  <title>Counter 9 Tattoo 九號櫃檯｜新莊刺青</title>
+  <meta name="description" content="Counter 9 Tattoo 九號櫃檯｜新北市新莊專業刺青工作室。美式、寫實、水墨、插畫風格刺青師。2F刺青、3F草地活動空間。" />
+  <meta property="og:title" content="Counter 9 Tattoo 九號櫃檯" />
+  <meta property="og:description" content="新北市新莊專業刺青工作室。美式、寫實、水墨、插畫。" />
+  <meta property="og:image" content="img/logo2.jpg" />
+  <meta property="og:type" content="website" />
   <style>
     :root{
       --bg:#111111;
@@ -36,750 +40,190 @@
       line-height:1.6;
       overflow-x:hidden;
     }
-
     a{color:inherit;text-decoration:none}
     img{display:block;max-width:100%}
 
-    .wrap{
-      width:min(var(--max), 92vw);
-      margin:0 auto;
-    }
-
-    .topbar{
-      position:sticky;
-      top:0;
-      z-index:1000;
-      backdrop-filter:blur(14px);
-      background:rgba(17,17,17,.82);
-      border-bottom:1px solid rgba(255,255,255,.06);
-    }
-
-    .nav{
-      min-height:76px;
-      display:flex;
-      align-items:center;
-      justify-content:space-between;
-      gap:24px;
-    }
-
-    .brand{
-      display:flex;
-      align-items:center;
-      gap:14px;
-      min-width:0;
-    }
-
-    .brand-mark{
-      display:grid;
-      grid-template-columns:repeat(4, 40px);
-      gap:6px;
-      flex-shrink:0;
-    }
-
-    .brand-mark span{
-      width:40px;
-      height:40px;
-      border:1px solid rgba(241,234,219,.55);
-      border-radius:999px;
-      display:flex;
-      align-items:center;
-      justify-content:center;
-      font-size:22px;
-      line-height:1;
-      color:var(--text);
-      background:linear-gradient(180deg, rgba(255,255,255,.04), rgba(255,255,255,.01));
-      box-shadow:inset 0 0 14px rgba(255,255,255,.03);
-    }
-
-    .brand-copy{
-      min-width:0;
-    }
-
-    .brand-copy .eyebrow{
-      font-size:11px;
-      letter-spacing:2.2px;
-      text-transform:uppercase;
-      color:var(--mustard);
-      margin-bottom:4px;
-    }
-
-    .brand-copy h1{
-      font-size:18px;
-      line-height:1.1;
-      white-space:nowrap;
-      overflow:hidden;
-      text-overflow:ellipsis;
-    }
-
-    .brand-copy p{
-      font-size:12px;
-      color:var(--muted);
-      margin-top:4px;
-    }
-
-    .nav-links{
-      display:flex;
-      align-items:center;
-      flex-wrap:wrap;
-      justify-content:flex-end;
-      gap:18px;
-    }
-
-    .nav-links a{
-      position:relative;
-      font-size:12px;
-      letter-spacing:1.6px;
-      text-transform:uppercase;
-      color:var(--soft);
-      padding:6px 0;
-    }
-
-    .nav-links a::after{
-      content:"";
-      position:absolute;
-      left:0;
-      bottom:0;
-      width:0;
-      height:1px;
-      background:var(--mustard);
-      transition:.25s ease;
-    }
-
-    .nav-links a:hover{
-      color:#fff;
-    }
-
-    .nav-links a:hover::after{
-      width:100%;
-    }
-
-    .hero{
-      padding:22px 0 40px;
-    }
-
-    .hero-grid{
-      display:grid;
-      grid-template-columns:1.2fr .8fr;
-      gap:18px;
-      align-items:stretch;
-    }
-
-    .hero-main,
-    .hero-side-card,
-    .section-block,
-    .artist-card,
-    .space-card,
-    .contact-card,
-    .work-card{
-      background:linear-gradient(180deg, rgba(255,255,255,.03), rgba(255,255,255,.015));
-      border:1px solid var(--line);
-      box-shadow:var(--shadow);
-    }
-
-    .hero-main{
-      position:relative;
-      min-height:78vh;
-      border-radius:var(--radius);
-      overflow:hidden;
-      background:#0f0f0f;
-    }
-
-    .hero-main img{
-      width:100%;
-      height:100%;
-      object-fit:cover;
-      filter:brightness(.52) contrast(1.03) saturate(.85);
-      transform:scale(1.02);
-    }
-
-    .hero-main::before{
-      content:"";
-      position:absolute;
-      inset:0;
-      background:
-        linear-gradient(180deg, rgba(0,0,0,.12), rgba(0,0,0,.74)),
-        linear-gradient(90deg, rgba(17,17,17,.72), transparent 44%),
-        radial-gradient(circle at 82% 18%, rgba(199,162,74,.16), transparent 22%);
-      z-index:1;
-    }
-
-    .hero-overlay{
-      position:absolute;
-      inset:0;
-      z-index:2;
-      display:flex;
-      flex-direction:column;
-      justify-content:space-between;
-      padding:24px;
-    }
-
-    .hero-topline{
-      display:flex;
-      flex-wrap:wrap;
-      gap:10px;
-    }
-
-    .tag{
-      display:inline-flex;
-      align-items:center;
-      min-height:34px;
-      padding:0 12px;
-      border-radius:999px;
-      border:1px solid rgba(255,255,255,.12);
-      background:rgba(0,0,0,.34);
-      color:var(--soft);
-      font-size:11px;
-      letter-spacing:1.2px;
-      text-transform:uppercase;
-    }
-
-    .tag.gold{
-      border-color:rgba(199,162,74,.36);
-      color:var(--mustard);
-    }
-
-    .hero-copy{
-      max-width:760px;
-    }
-
-    .hero-kicker{
-      font-size:12px;
-      letter-spacing:2px;
-      text-transform:uppercase;
-      color:var(--mustard);
-      margin-bottom:10px;
-    }
-
-    .hero-title{
-      font-size:clamp(42px, 7vw, 110px);
-      line-height:.9;
-      letter-spacing:2px;
-      text-transform:uppercase;
-      margin-bottom:14px;
-      max-width:8ch;
-    }
-
-    .hero-sub{
-      font-size:15px;
-      letter-spacing:1.8px;
-      text-transform:uppercase;
-      color:rgba(241,234,219,.84);
-      margin-bottom:16px;
-      max-width:680px;
-    }
-
-    .hero-desc{
-      color:var(--soft);
-      font-size:15px;
-      max-width:620px;
-    }
-
-    .cta-row{
-      display:flex;
-      flex-wrap:wrap;
-      gap:12px;
-      margin-top:24px;
-    }
-
-    .btn{
-      display:inline-flex;
-      align-items:center;
-      justify-content:center;
-      min-height:48px;
-      padding:0 18px;
-      border-radius:999px;
-      border:1px solid rgba(255,255,255,.14);
-      font-size:12px;
-      letter-spacing:1.8px;
-      text-transform:uppercase;
-      transition:.22s ease;
-      cursor:pointer;
-    }
-
-    .btn.primary{
-      background:var(--red);
-      border-color:rgba(182,58,43,.8);
-      color:#fff4eb;
-    }
-
-    .btn.primary:hover{
-      background:#cb4635;
-      transform:translateY(-1px);
-    }
-
-    .btn.secondary{
-      color:var(--mustard);
-      border-color:rgba(199,162,74,.34);
-      background:rgba(0,0,0,.18);
-    }
-
-    .btn.secondary:hover{
-      background:rgba(199,162,74,.08);
-      transform:translateY(-1px);
-    }
-
-    .hero-side{
-      display:grid;
-      gap:18px;
-      grid-template-rows:1fr 1fr;
-    }
-
-    .hero-side-card{
-      border-radius:var(--radius);
-      padding:24px;
-      position:relative;
-      overflow:hidden;
-      min-height:240px;
-    }
-
-    .card-label{
-      color:var(--mustard);
-      font-size:11px;
-      letter-spacing:2px;
-      text-transform:uppercase;
-      margin-bottom:12px;
-    }
-
-    .hero-side-card h3{
-      font-size:32px;
-      line-height:1;
-      letter-spacing:1px;
-      text-transform:uppercase;
-      margin-bottom:12px;
-    }
-
-    .hero-side-card p{
-      color:var(--soft);
-      font-size:14px;
-    }
-
-    .list-lines{
-      margin-top:16px;
-      display:grid;
-      gap:10px;
-    }
-
-    .list-lines div{
-      padding-top:10px;
-      border-top:1px solid rgba(255,255,255,.08);
-      color:rgba(241,234,219,.84);
-      font-size:13px;
-    }
-
-    .section{
-      padding:0 0 18px;
-    }
-
-    .section-block{
-      border-radius:var(--radius);
-      padding:26px;
-      margin-bottom:18px;
-      position:relative;
-      overflow:hidden;
-    }
-
-    .section-top{
-      display:flex;
-      justify-content:space-between;
-      align-items:end;
-      gap:18px;
-      flex-wrap:wrap;
-      margin-bottom:20px;
-    }
-
-    .section-code{
-      color:var(--mustard);
-      font-size:11px;
-      letter-spacing:2px;
-      text-transform:uppercase;
-      margin-bottom:8px;
-    }
-
-    .section-title{
-      font-size:clamp(34px, 5vw, 68px);
-      line-height:.92;
-      letter-spacing:2px;
-      text-transform:uppercase;
-    }
-
-    .section-copy{
-      max-width:520px;
-      color:var(--soft);
-      font-size:14px;
-    }
-
-    .work-grid{
-      display:grid;
-      grid-template-columns:1.15fr .85fr .85fr;
-      gap:14px;
-      align-items:stretch;
-    }
-
-    .work-card{
-      position:relative;
-      min-height:360px;
-      overflow:hidden;
-      border-radius:18px;
-      background:#121212;
-      cursor:pointer;
-    }
-
-    .work-card img{
-      width:100%;
-      height:100%;
-      object-fit:cover;
-      transition:transform .5s ease, filter .35s ease;
-      filter:brightness(.76);
-    }
-
-    .work-card:hover img{
-      transform:scale(1.04);
-      filter:brightness(.9);
-    }
-
-    .work-card::after{
-      content:"";
-      position:absolute;
-      inset:0;
-      background:linear-gradient(180deg, rgba(0,0,0,.04), rgba(0,0,0,.62));
-      pointer-events:none;
-    }
-
-    .work-meta{
-      position:absolute;
-      left:16px;
-      right:16px;
-      bottom:14px;
-      z-index:2;
-      pointer-events:none;
-    }
-
-    .work-meta strong{
-      display:block;
-      font-size:15px;
-      letter-spacing:1.2px;
-      text-transform:uppercase;
-      margin-bottom:4px;
-    }
-
-    .work-meta span{
-      font-size:12px;
-      color:rgba(241,234,219,.74);
-    }
-
-    .artists-grid{
-      display:grid;
-      grid-template-columns:repeat(4,1fr);
-      gap:14px;
-    }
-
-    .artist-card{
-      overflow:hidden;
-      border-radius:18px;
-      background:linear-gradient(180deg, rgba(255,255,255,.03), rgba(255,255,255,.012));
-    }
-
-    .artist-image{
-      position:relative;
-      aspect-ratio:4/5;
-      overflow:hidden;
-      background:#101010;
-    }
-
-    .artist-image img{
-      width:100%;
-      height:100%;
-      object-fit:cover;
-      transition:transform .45s ease, filter .35s ease;
-      filter:brightness(.86);
-    }
-
-    .artist-card:hover .artist-image img{
-      transform:scale(1.03);
-      filter:brightness(.96);
-    }
-
-    .artist-no{
-      position:absolute;
-      top:12px;
-      left:12px;
-      z-index:2;
-      padding:6px 9px;
-      border-radius:999px;
-      border:1px solid rgba(199,162,74,.35);
-      background:rgba(0,0,0,.34);
-      color:var(--mustard);
-      font-size:11px;
-      letter-spacing:1.4px;
-      text-transform:uppercase;
-    }
-
-    .artist-info{
-      padding:16px;
-    }
-
-    .artist-role{
-      color:var(--muted);
-      font-size:11px;
-      letter-spacing:1.6px;
-      text-transform:uppercase;
-      margin-bottom:8px;
-    }
-
-    .artist-info h3{
-      font-size:28px;
-      line-height:1;
-      letter-spacing:1px;
-      text-transform:uppercase;
-      margin-bottom:10px;
-    }
-
-    .artist-info p{
-      font-size:14px;
-      color:var(--soft);
-      min-height:48px;
-    }
-
-    .artist-info a{
-      display:inline-block;
-      margin-top:14px;
-      font-size:12px;
-      letter-spacing:1.6px;
-      text-transform:uppercase;
-      color:var(--mustard);
-    }
-
-    .space-grid{
-      display:grid;
-      grid-template-columns:1fr 1fr;
-      gap:14px;
-      margin-bottom:14px;
-    }
-
-    .space-card{
-      position:relative;
-      min-height:360px;
-      overflow:hidden;
-      border-radius:18px;
-      background:#121212;
-    }
-
-    .space-card img{
-      width:100%;
-      height:100%;
-      object-fit:cover;
-      filter:brightness(.84);
-      transition:transform .45s ease;
-    }
-
-    .space-card:hover img{
-      transform:scale(1.03);
-    }
-
-    .space-card::after{
-      content:"";
-      position:absolute;
-      inset:0;
-      background:linear-gradient(180deg, rgba(0,0,0,.06), rgba(0,0,0,.56));
-      pointer-events:none;
-    }
-
-    .space-meta{
-      position:absolute;
-      left:16px;
-      right:16px;
-      bottom:14px;
-      z-index:2;
-    }
-
-    .space-meta strong{
-      display:block;
-      font-size:15px;
-      letter-spacing:1.2px;
-      text-transform:uppercase;
-      margin-bottom:4px;
-    }
-
-    .space-meta span{
-      font-size:12px;
-      color:rgba(241,234,219,.74);
-    }
-
-    .info-grid{
-      display:grid;
-      grid-template-columns:1fr 1fr;
-      gap:14px;
-    }
-
-    .contact-card{
-      border-radius:18px;
-      padding:22px;
-      background:linear-gradient(180deg, rgba(255,255,255,.03), rgba(255,255,255,.012));
-    }
-
-    .contact-card h3{
-      font-size:32px;
-      line-height:1;
-      letter-spacing:1px;
-      text-transform:uppercase;
-      margin-bottom:12px;
-    }
-
-    .contact-card p{
-      color:var(--soft);
-      font-size:14px;
-    }
-
-    .pill-row{
-      display:flex;
-      flex-wrap:wrap;
-      gap:8px;
-      margin-top:16px;
-    }
-
-    .pill{
-      display:inline-flex;
-      align-items:center;
-      min-height:32px;
-      padding:0 10px;
-      border-radius:999px;
-      border:1px solid rgba(255,255,255,.1);
-      color:rgba(241,234,219,.76);
-      font-size:11px;
-      letter-spacing:1.2px;
-      text-transform:uppercase;
-    }
-
-    .contact-list{
-      display:grid;
-      gap:10px;
-      margin-top:14px;
-    }
-
-    .contact-item{
-      display:flex;
-      justify-content:space-between;
-      gap:16px;
-      padding-bottom:10px;
-      border-bottom:1px solid rgba(255,255,255,.08);
-      font-size:14px;
-      color:var(--soft);
-    }
-
-    .contact-item strong{
-      color:var(--text);
-      letter-spacing:.3px;
-    }
-
-    .movie-strip{
-      margin-top:20px;
-      border:1px dashed rgba(199,162,74,.24);
-      border-radius:16px;
-      padding:16px;
-      background:rgba(199,162,74,.03);
-    }
-
-    .movie-strip h4{
-      font-size:13px;
-      letter-spacing:1.8px;
-      text-transform:uppercase;
-      color:var(--mustard);
-      margin-bottom:10px;
-    }
-
-    .movie-strip p{
-      color:var(--soft);
-      font-size:14px;
-    }
-
-    footer{
-      padding:18px 0 42px;
-      color:rgba(241,234,219,.42);
-      font-size:12px;
-      letter-spacing:1.4px;
-      text-transform:uppercase;
-    }
-
-    .reveal{
-      opacity:0;
-      transform:translateY(24px);
-      transition:opacity .7s ease, transform .7s ease;
-    }
-
-    .reveal.visible{
-      opacity:1;
-      transform:none;
-    }
-
-    /* Lightbox */
-    #lightbox{
-      position:fixed;
-      inset:0;
-      background:rgba(0,0,0,.92);
-      display:none;
-      align-items:center;
-      justify-content:center;
-      z-index:9999;
-      padding:24px;
-      cursor:pointer;
-    }
-
-    #lightbox.open{
-      display:flex;
-    }
-
-    #lightbox-img{
-      max-width:min(92vw, 1400px);
-      max-height:90vh;
-      width:auto;
-      height:auto;
-      object-fit:contain;
-      box-shadow:0 24px 80px rgba(0,0,0,.55);
-      border-radius:10px;
-      cursor:auto;
-    }
-
-    @media (max-width:1080px){
+    .wrap{width:min(var(--max), 92vw);margin:0 auto;}
+
+    /* NAV */
+    .topbar{position:sticky;top:0;z-index:1000;backdrop-filter:blur(14px);background:rgba(17,17,17,.88);border-bottom:1px solid rgba(255,255,255,.06);}
+    .nav{min-height:76px;display:flex;align-items:center;justify-content:space-between;gap:24px;}
+    .brand{display:flex;align-items:center;gap:14px;min-width:0;}
+    .brand-mark{display:grid;grid-template-columns:repeat(4,40px);gap:6px;flex-shrink:0;}
+    .brand-mark span{width:40px;height:40px;border:1px solid rgba(241,234,219,.55);border-radius:999px;display:flex;align-items:center;justify-content:center;font-size:22px;line-height:1;color:var(--text);background:linear-gradient(180deg,rgba(255,255,255,.04),rgba(255,255,255,.01));box-shadow:inset 0 0 14px rgba(255,255,255,.03);}
+    .brand-copy .eyebrow{font-size:11px;letter-spacing:2.2px;text-transform:uppercase;color:var(--muted);margin-bottom:2px;}
+    .brand-copy h1{font-size:15px;font-weight:700;letter-spacing:.5px;white-space:nowrap;}
+    .brand-copy p{font-size:11px;color:var(--muted);}
+    .nav-links{display:flex;gap:28px;flex-shrink:0;}
+    .nav-links a{font-size:13px;letter-spacing:1.4px;text-transform:uppercase;color:var(--soft);transition:color .2s;}
+    .nav-links a:hover{color:var(--mustard);}
+
+    /* HERO */
+    .hero{padding:28px 0 0;}
+    .hero-grid{display:grid;grid-template-columns:1fr 380px;gap:16px;}
+    .hero-main{position:relative;border-radius:var(--radius);overflow:hidden;min-height:78vh;}
+    .hero-main img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;filter:brightness(.52) contrast(1.03) saturate(.85);transform:scale(1.02);}
+    .hero-main::before{content:"";position:absolute;inset:0;background:linear-gradient(180deg,rgba(0,0,0,.12),rgba(0,0,0,.74)),linear-gradient(90deg,rgba(17,17,17,.72),transparent 44%),radial-gradient(circle at 82% 18%,rgba(199,162,74,.16),transparent 22%);z-index:1;}
+    .hero-overlay{position:absolute;inset:0;z-index:2;display:flex;flex-direction:column;justify-content:space-between;padding:28px;}
+    .hero-topline{display:flex;flex-wrap:wrap;gap:10px;}
+    .tag{display:inline-flex;align-items:center;min-height:34px;padding:0 12px;border-radius:999px;border:1px solid rgba(255,255,255,.12);background:rgba(0,0,0,.34);color:var(--soft);font-size:11px;letter-spacing:1.2px;text-transform:uppercase;}
+    .tag.gold{border-color:rgba(199,162,74,.36);color:var(--mustard);}
+    .hero-copy{max-width:760px;}
+    .hero-kicker{font-size:12px;letter-spacing:2px;text-transform:uppercase;color:var(--mustard);margin-bottom:10px;}
+    .hero-title{font-size:clamp(42px,7vw,110px);line-height:.9;letter-spacing:2px;text-transform:uppercase;margin-bottom:14px;max-width:8ch;}
+    .hero-sub{font-size:15px;letter-spacing:1.8px;text-transform:uppercase;color:rgba(241,234,219,.84);margin-bottom:16px;max-width:680px;}
+    .hero-desc{font-size:14px;color:var(--soft);max-width:480px;line-height:1.7;margin-bottom:24px;}
+    .cta-row{display:flex;gap:12px;flex-wrap:wrap;}
+
+    .hero-side{display:grid;grid-template-rows:1fr 1fr;gap:16px;}
+    .hero-side-card{background:var(--panel);border:1px solid var(--line);border-radius:var(--radius-sm);padding:28px;display:flex;flex-direction:column;gap:12px;}
+    .card-label{font-size:11px;letter-spacing:2px;text-transform:uppercase;color:var(--mustard);}
+    .hero-side-card h3{font-size:18px;font-weight:700;}
+    .hero-side-card p{font-size:13px;color:var(--soft);line-height:1.6;}
+    .list-lines{display:flex;flex-direction:column;gap:6px;margin-top:6px;}
+    .list-lines div{font-size:12px;color:var(--muted);border-left:2px solid var(--mustard);padding-left:10px;}
+    .pill-row{display:flex;flex-wrap:wrap;gap:8px;margin-top:4px;}
+    .pill{font-size:11px;padding:4px 10px;border-radius:999px;border:1px solid var(--line);color:var(--muted);}
+
+    /* BUTTONS */
+    .btn{display:inline-flex;align-items:center;gap:8px;padding:12px 22px;border-radius:999px;font-size:13px;font-weight:600;letter-spacing:.8px;text-transform:uppercase;transition:all .2s;cursor:pointer;border:none;}
+    .btn.primary{background:var(--mustard);color:var(--black);}
+    .btn.primary:hover{background:#d4ae58;}
+    .btn.secondary{background:transparent;border:1px solid rgba(241,234,219,.25);color:var(--text);}
+    .btn.secondary:hover{border-color:var(--mustard);color:var(--mustard);}
+    .btn.outline{background:transparent;border:1px solid var(--mustard);color:var(--mustard);}
+    .btn.outline:hover{background:var(--mustard);color:var(--black);}
+
+    /* SECTIONS */
+    .section{padding:72px 0;}
+    .section-block{background:var(--panel);border:1px solid var(--line);border-radius:var(--radius);padding:40px;margin-bottom:24px;}
+    .section-top{display:flex;justify-content:space-between;align-items:flex-start;margin-bottom:36px;gap:24px;}
+    .section-code{font-size:11px;letter-spacing:2px;text-transform:uppercase;color:var(--mustard);margin-bottom:8px;}
+    .section-title{font-size:clamp(26px,3.5vw,40px);font-weight:800;letter-spacing:-1px;}
+    .section-copy{font-size:14px;color:var(--soft);max-width:360px;text-align:right;line-height:1.7;}
+
+    /* WORK GRID */
+    .work-grid{display:grid;grid-template-columns:2fr 1fr 1fr;gap:12px;}
+    .work-card{position:relative;border-radius:var(--radius-sm);overflow:hidden;background:var(--panel-2);cursor:pointer;}
+    .work-card:first-child{grid-row:span 2;}
+    .work-card img{width:100%;height:100%;object-fit:cover;aspect-ratio:1;transition:transform .6s ease,opacity .4s;}
+    .work-card:first-child img{aspect-ratio:auto;min-height:320px;}
+    .work-card:hover img{transform:scale(1.04);opacity:.9;}
+    .work-meta{position:absolute;bottom:0;left:0;right:0;padding:16px;background:linear-gradient(transparent,rgba(0,0,0,.75));transform:translateY(100%);transition:transform .4s;}
+    .work-card:hover .work-meta{transform:translateY(0);}
+    .work-meta strong{display:block;font-size:13px;font-weight:700;}
+    .work-meta span{font-size:11px;color:var(--muted);}
+
+    /* ARTISTS */
+    .artists-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:16px;}
+    .artist-card{background:var(--panel-2);border:1px solid var(--line);border-radius:var(--radius-sm);overflow:hidden;transition:border-color .3s;}
+    .artist-card:hover{border-color:var(--mustard);}
+    .artist-image{position:relative;aspect-ratio:1;overflow:hidden;}
+    .artist-image img{width:100%;height:100%;object-fit:cover;transition:transform .6s ease;}
+    .artist-card:hover .artist-image img{transform:scale(1.06);}
+    .artist-no{position:absolute;top:12px;left:12px;font-size:10px;letter-spacing:2px;text-transform:uppercase;color:var(--mustard);background:rgba(0,0,0,.6);padding:4px 8px;border-radius:999px;}
+    .artist-info{padding:20px;}
+    .artist-role{font-size:11px;letter-spacing:1.5px;text-transform:uppercase;color:var(--mustard);margin-bottom:6px;}
+    .artist-info h3{font-size:18px;font-weight:700;margin-bottom:6px;}
+    .artist-info p{font-size:13px;color:var(--soft);line-height:1.6;margin-bottom:14px;}
+    .artist-ig{display:inline-flex;align-items:center;gap:6px;font-size:12px;color:var(--muted);border:1px solid var(--line);border-radius:999px;padding:6px 12px;transition:all .2s;}
+    .artist-ig:hover{border-color:var(--mustard);color:var(--mustard);}
+
+    /* SPACE */
+    .space-grid{display:grid;grid-template-columns:1fr 1fr;gap:16px;margin-bottom:20px;}
+    .space-card{border-radius:var(--radius-sm);overflow:hidden;position:relative;cursor:pointer;}
+    .space-card img{width:100%;aspect-ratio:16/9;object-fit:cover;transition:transform .6s ease;}
+    .space-card:hover img{transform:scale(1.04);}
+    .space-meta{position:absolute;bottom:0;left:0;right:0;padding:20px;background:linear-gradient(transparent,rgba(0,0,0,.8));}
+    .space-meta strong{display:block;font-size:15px;font-weight:700;margin-bottom:4px;}
+    .space-meta span{font-size:12px;color:var(--soft);}
+
+    /* INFO GRID */
+    .info-grid{display:grid;grid-template-columns:1fr 1fr;gap:16px;}
+    .contact-card{background:var(--panel-2);border:1px solid var(--line);border-radius:var(--radius-sm);padding:28px;}
+    .contact-card h3{font-size:18px;font-weight:700;margin:10px 0 14px;}
+    .contact-card p{font-size:13px;color:var(--soft);line-height:1.7;margin-bottom:16px;}
+    .contact-list{display:flex;flex-direction:column;gap:10px;margin-bottom:20px;}
+    .contact-item{display:flex;justify-content:space-between;align-items:center;font-size:13px;padding-bottom:10px;border-bottom:1px solid var(--line);}
+    .contact-item:last-child{border-bottom:none;}
+    .contact-item strong{color:var(--muted);font-size:11px;letter-spacing:1px;text-transform:uppercase;}
+    .contact-item span{color:var(--text);}
+    .contact-item a{color:var(--mustard);transition:opacity .2s;}
+    .contact-item a:hover{opacity:.7;}
+
+    /* FAQ */
+    .faq-grid{display:grid;grid-template-columns:1fr 1fr;gap:12px;}
+    .faq-item{background:var(--panel-2);border:1px solid var(--line);border-radius:var(--radius-sm);padding:0;overflow:hidden;}
+    .faq-q{width:100%;background:transparent;border:none;color:var(--text);font-size:14px;font-weight:600;padding:18px 20px;text-align:left;cursor:pointer;display:flex;justify-content:space-between;align-items:center;gap:12px;transition:color .2s;}
+    .faq-q:hover{color:var(--mustard);}
+    .faq-q .chevron{font-size:18px;transition:transform .3s;flex-shrink:0;color:var(--muted);}
+    .faq-item.open .faq-q .chevron{transform:rotate(45deg);}
+    .faq-a{max-height:0;overflow:hidden;transition:max-height .4s ease;}
+    .faq-item.open .faq-a{max-height:300px;}
+    .faq-a-inner{padding:0 20px 18px;font-size:13px;color:var(--soft);line-height:1.8;border-top:1px solid var(--line);}
+
+    /* MOVIE STRIP */
+    .movie-strip{background:var(--panel);border:1px solid var(--line);border-radius:var(--radius-sm);padding:16px;margin-top:16px;}
+    .movie-strip h4{font-size:13px;font-weight:700;color:var(--mustard);margin-bottom:6px;}
+    .movie-strip p{font-size:12px;color:var(--muted);}
+
+    /* FOOTER */
+    footer{border-top:1px solid var(--line);padding:32px 0;margin-top:40px;}
+    footer .wrap{display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:16px;}
+    .footer-left{font-size:12px;color:var(--muted);}
+    .footer-right{display:flex;gap:20px;}
+    .footer-right a{font-size:12px;color:var(--muted);transition:color .2s;}
+    .footer-right a:hover{color:var(--mustard);}
+
+    /* LIGHTBOX */
+    #lightbox{position:fixed;inset:0;background:rgba(0,0,0,.94);display:none;align-items:center;justify-content:center;z-index:9999;padding:24px;cursor:pointer;}
+    #lightbox.open{display:flex;}
+    #lightbox-img{max-width:min(92vw,1400px);max-height:90vh;width:auto;height:auto;object-fit:contain;box-shadow:0 24px 80px rgba(0,0,0,.55);border-radius:10px;cursor:auto;}
+    .lightbox-close{position:absolute;top:24px;right:28px;font-size:28px;color:rgba(241,234,219,.5);cursor:pointer;transition:color .2s;line-height:1;}
+    .lightbox-close:hover{color:var(--text);}
+
+    /* REVEAL */
+    .reveal{opacity:0;transform:translateY(24px);transition:opacity .7s ease,transform .7s ease;}
+    .reveal.visible{opacity:1;transform:none;}
+
+    /* RESPONSIVE */
+    @media(max-width:1080px){
       .hero-grid{grid-template-columns:1fr}
-      .hero-side{grid-template-columns:1fr 1fr; grid-template-rows:auto}
+      .hero-side{grid-template-columns:1fr 1fr;grid-template-rows:auto}
       .work-grid{grid-template-columns:1fr 1fr}
-      .work-grid .work-card:first-child{grid-column:1 / -1}
+      .work-grid .work-card:first-child{grid-column:1/-1;grid-row:auto}
       .artists-grid{grid-template-columns:1fr 1fr}
       .hero-main{min-height:70vh}
+      .faq-grid{grid-template-columns:1fr}
     }
-
-    @media (max-width:720px){
-      .nav{padding:14px 0; align-items:flex-start; flex-direction:column}
-      .nav-links{justify-content:flex-start; gap:14px}
+    @media(max-width:720px){
+      .nav{padding:14px 0;align-items:flex-start;flex-direction:column}
+      .nav-links{justify-content:flex-start;gap:14px}
       .hero{padding-top:18px}
       .hero-main{min-height:66vh}
       .hero-overlay{padding:18px}
-      .hero-title{font-size:clamp(40px, 14vw, 72px)}
-      .hero-side,
-      .work-grid,
-      .artists-grid,
-      .space-grid,
-      .info-grid{grid-template-columns:1fr}
+      .hero-title{font-size:clamp(40px,14vw,72px)}
+      .hero-side,.work-grid,.artists-grid,.space-grid,.info-grid{grid-template-columns:1fr}
       .section-block{padding:20px}
-      .contact-item{flex-direction:column; gap:4px}
+      .section-top{flex-direction:column}
+      .section-copy{text-align:left;max-width:100%}
+      .contact-item{flex-direction:column;align-items:flex-start;gap:4px}
       .brand-copy h1{white-space:normal}
-      .brand-mark{
-        grid-template-columns:repeat(4, 32px);
-      }
-      .brand-mark span{
-        width:32px;
-        height:32px;
-        font-size:18px;
-      }
+      .brand-mark{grid-template-columns:repeat(4,32px)}
+      .brand-mark span{width:32px;height:32px;font-size:18px}
+      footer .wrap{flex-direction:column;align-items:flex-start}
     }
   </style>
 </head>
 <body>
 
+  <!-- Lightbox -->
   <div id="lightbox" aria-hidden="true">
+    <span class="lightbox-close" onclick="closeLightbox()">×</span>
     <img id="lightbox-img" src="" alt="放大圖片">
   </div>
 
+  <!-- NAV -->
   <header class="topbar">
     <div class="wrap nav">
       <div class="brand">
@@ -789,41 +233,42 @@
         <div class="brand-copy">
           <div class="eyebrow">Counter 9 Tattoo Studio</div>
           <h1>Counter 9 Tattoo 九號櫃檯</h1>
-          <p>刺青店 / Taipei, Taiwan</p>
+          <p>刺青店 / New Taipei City, Taiwan</p>
         </div>
       </div>
-
       <nav class="nav-links">
         <a href="#work">Works</a>
         <a href="#artists">Artists</a>
         <a href="#space">Space</a>
+        <a href="#faq">FAQ</a>
         <a href="#contact">Contact</a>
       </nav>
     </div>
   </header>
 
+  <!-- HERO -->
   <main class="hero wrap">
     <div class="hero-grid reveal">
       <section class="hero-main">
-        <img src="img/2f1.jpg" alt="Counter 9 Tattoo studio">
+        <img src="img/logo2.jpg" alt="Counter 9 Tattoo 九號櫃檯招牌">
         <div class="hero-overlay">
           <div class="hero-topline">
             <span class="tag gold">American Tattoo</span>
-            <span class="tag">Vintage Toys</span>
-            <span class="tag">Cult Film Nights</span>
+            <span class="tag">Realism</span>
+            <span class="tag">Ink Wash</span>
+            <span class="tag">Illustration</span>
             <span class="tag">3F Event Space</span>
           </div>
-
           <div class="hero-copy">
-            <div class="hero-kicker">Counter 9 Tattoo Studio</div>
-            <h2 class="hero-title">Tattoo<br>Shop &<br>Culture Space</h2>
-            <div class="hero-sub">刺青、復古玩具、cult 片放映</div>
+            <div class="hero-kicker">Counter 9 Tattoo Studio · 新莊</div>
+            <h2 class="hero-title">Tattoo<br>Shop &<br>Culture</h2>
+            <div class="hero-sub">刺青・復古・cult 片・活動空間</div>
             <p class="hero-desc">
-              九號櫃檯是位於新莊的一間專業刺青店，店內目前有美式、寫實、水墨等各種風格的刺青師。
+              九號櫃檯位於新北市新莊，2F 專業刺青工作室，3F 半室內草地活動空間。美式、寫實、水墨、插畫，四位風格各異的刺青師。
             </p>
             <div class="cta-row">
               <a class="btn primary" href="https://www.instagram.com/counter_9_tattoo/" target="_blank" rel="noreferrer">Studio Instagram</a>
-              <a class="btn secondary" href="#contact">Book / Contact</a>
+              <a class="btn secondary" href="#contact">預約 / Contact</a>
             </div>
           </div>
         </div>
@@ -832,171 +277,165 @@
       <aside class="hero-side">
         <section class="hero-side-card">
           <div class="card-label">Studio Profile</div>
-          <h3>Tattoo Shop</h3>
-          <p>店內不定時舉辦各類活動、市集，cult電影放映</p>
+          <h3>Tattoo & More</h3>
+          <p>專業刺青工作室，同時是復古玩具、cult 電影、活動策劃的文化空間。</p>
           <div class="list-lines">
             <div>2F / Tattoo & Piercing Studio</div>
             <div>3F / Semi-indoor Grass Event Space</div>
-            <div>New Taipei City, Xinzhuang Dist.</div>
+            <div>新北市新莊區西盛街 441 號</div>
           </div>
         </section>
 
         <section class="hero-side-card">
           <div class="card-label">Studio Mood</div>
-          <h3>Retro Toys / DVDs / Flash / Hangout</h3>
-          <p>專業與多元並存的刺青店。</p>
+          <h3>American Core · Vintage · Cult</h3>
+          <p>店內收藏復古玩具、cult 片影碟，每月不定期放映活動。</p>
           <div class="pill-row">
             <span class="pill">American Core</span>
             <span class="pill">Vintage Objects</span>
             <span class="pill">Cult Screening</span>
-            <span class="pill">Shop Energy</span>
+            <span class="pill">Community Space</span>
           </div>
         </section>
       </aside>
     </div>
   </main>
 
-  <div class="wrap section" id="work">
-    <section class="section-block reveal">
+  <div class="wrap section">
+
+    <!-- WORKS -->
+    <section class="section-block reveal" id="work">
       <div class="section-top">
         <div>
           <div class="section-code">Section-01 / Works</div>
           <h2 class="section-title">Tattoo Works</h2>
         </div>
-        <p class="section-copy">
-          作品
-        </p>
+        <p class="section-copy">四位刺青師，各自風格。點擊圖片放大。</p>
       </div>
-
       <div class="work-grid">
-        <article class="work-card">
-          <img src="img/ant2.jpg" alt="Ant tattoo work">
-          <div class="work-meta">
-            <strong>Main Signal</strong>
-            <span>蟻太作品 / 美式</span>
-          </div>
+        <article class="work-card" onclick="openLightbox('img/ant2.jpg','蟻太 · 美式刺青')">
+          <img src="img/ant2.jpg" alt="蟻太刺青作品">
+          <div class="work-meta"><strong>蟻太 · Ant</strong><span>美式刺青</span></div>
         </article>
-
-        <article class="work-card">
-          <img src="img/ant1.jpg" alt="Ant tattoo work 2">
-          <div class="work-meta">
-            <strong>American Core</strong>
-            <span>作品二</span>
-          </div>
+        <article class="work-card" onclick="openLightbox('img/ant1.jpg','蟻太 · 美式刺青')">
+          <img src="img/ant1.jpg" alt="蟻太刺青作品2">
+          <div class="work-meta"><strong>蟻太 · Ant</strong><span>美式刺青</span></div>
         </article>
-
-        <article class="work-card">
-          <img src="img/2f2.jpg" alt="Counter 9 studio detail">
-          <div class="work-meta">
-            <strong>Shop Energy</strong>
-            <span>店內圖片</span>
-          </div>
+        <article class="work-card" onclick="openLightbox('img/ant3.jpg','蟻太 · 美式刺青')">
+          <img src="img/ant3.jpg" alt="蟻太刺青作品3">
+          <div class="work-meta"><strong>蟻太 · Ant</strong><span>美式刺青</span></div>
+        </article>
+        <article class="work-card" onclick="openLightbox('img/sunny1.jpg','Sunny · 寫實刺青')">
+          <img src="img/sunny1.jpg" alt="Sunny刺青作品">
+          <div class="work-meta"><strong>Sunny · 晴</strong><span>寫實刺青</span></div>
+        </article>
+        <article class="work-card" onclick="openLightbox('img/hundred1.jpg','Hundred · 水墨刺青')">
+          <img src="img/hundred1.jpg" alt="Hundred刺青作品">
+          <div class="work-meta"><strong>Hundred · 百</strong><span>水墨刺青</span></div>
+        </article>
+        <article class="work-card" onclick="openLightbox('img/vinn1.jpg','Vinn · 插畫刺青')">
+          <img src="img/vinn1.jpg" alt="Vinn刺青作品">
+          <div class="work-meta"><strong>Vinn · 祐</strong><span>插畫刺青</span></div>
         </article>
       </div>
     </section>
 
+    <!-- ARTISTS -->
     <section class="section-block reveal" id="artists">
       <div class="section-top">
         <div>
           <div class="section-code">Section-02 / Artists</div>
           <h2 class="section-title">Artists</h2>
         </div>
-        <p class="section-copy">
-          九號櫃檯有不同風格的刺青師。
-        </p>
+        <p class="section-copy">點擊 IG 帳號可直接私訊預約。</p>
       </div>
-
       <div class="artists-grid">
+
         <article class="artist-card">
-          <div class="artist-image">
-            <img src="img/ant1.jpg" alt="Ant">
-            <div class="artist-no">Artist 01</div>
+          <div class="artist-image" onclick="openLightbox('img/ant1.jpg','蟻太 · 美式刺青')" style="cursor:pointer">
+            <img src="img/ant1.jpg" alt="蟻太">
+            <div class="artist-no">Artist 01 · Founder</div>
           </div>
           <div class="artist-info">
-            <div class="artist-role">Main Artist</div>
-            <h3>Ant</h3>
-            <p>美式刺青。</p>
-            <a href="https://www.instagram.com/ant_tattooer/" target="_blank" rel="noreferrer">@ant_tattooer</a>
+            <div class="artist-role">美式刺青 American Tattoo</div>
+            <h3>蟻太 · Ant</h3>
+            <p>九號櫃檯創辦人。專精美式傳統刺青，線條飽滿、色彩鮮明，大面積滿背作品尤為拿手。</p>
+            <a href="https://www.instagram.com/ant_tattooer/" target="_blank" rel="noreferrer" class="artist-ig">@ant_tattooer →</a>
           </div>
         </article>
 
         <article class="artist-card">
-          <div class="artist-image">
+          <div class="artist-image" onclick="openLightbox('img/sunny1.jpg','Sunny · 寫實刺青')" style="cursor:pointer">
             <img src="img/sunny1.jpg" alt="Sunny">
             <div class="artist-no">Artist 02</div>
           </div>
           <div class="artist-info">
-            <div class="artist-role">Tattoo Artist</div>
-            <h3>Sunny</h3>
-            <p>寫實作品。</p>
-            <a href="https://www.instagram.com/sunnii36/" target="_blank" rel="noreferrer">@sunnii36</a>
+            <div class="artist-role">寫實刺青 Realism</div>
+            <h3>Sunny · 晴</h3>
+            <p>寫實風格，細膩的光影層次與皮膚質感，人像、動物與自然主題均有涉獵。</p>
+            <a href="https://www.instagram.com/sunnii36/" target="_blank" rel="noreferrer" class="artist-ig">@sunnii36 →</a>
           </div>
         </article>
 
         <article class="artist-card">
-          <div class="artist-image">
+          <div class="artist-image" onclick="openLightbox('img/hundred1.jpg','Hundred · 水墨刺青')" style="cursor:pointer">
             <img src="img/hundred1.jpg" alt="Hundred">
             <div class="artist-no">Artist 03</div>
           </div>
           <div class="artist-info">
-            <div class="artist-role">Tattoo Artist</div>
-            <h3>Hundred</h3>
-            <p>水墨。</p>
-            <a href="https://www.instagram.com/houiooiooo/" target="_blank" rel="noreferrer">@houiooiooo</a>
+            <div class="artist-role">水墨刺青 Ink Wash</div>
+            <h3>Hundred · 百</h3>
+            <p>將東方筆墨的運筆邏輯直接轉譯於皮膚，每件作品皆為即興一次性創作。</p>
+            <a href="https://www.instagram.com/houiooiooo/" target="_blank" rel="noreferrer" class="artist-ig">@houiooiooo →</a>
           </div>
         </article>
 
         <article class="artist-card">
-          <div class="artist-image">
+          <div class="artist-image" onclick="openLightbox('img/vinn1.jpg','Vinn · 插畫刺青')" style="cursor:pointer">
             <img src="img/vinn1.jpg" alt="Vinn">
             <div class="artist-no">Artist 04</div>
           </div>
           <div class="artist-info">
-            <div class="artist-role">Tattoo Artist</div>
-            <h3>Vinn</h3>
-            <p>插畫風格。</p>
-            <a href="https://www.instagram.com/vinn_yo1923/" target="_blank" rel="noreferrer">@vinn_yo1923</a>
+            <div class="artist-role">插畫刺青 Illustration</div>
+            <h3>Vinn · 祐</h3>
+            <p>插畫風格，線條利落，設計感強，擅長客製角色與創意圖形。</p>
+            <a href="https://www.instagram.com/vinn_yo1923/" target="_blank" rel="noreferrer" class="artist-ig">@vinn_yo1923 →</a>
           </div>
         </article>
+
       </div>
     </section>
 
+    <!-- SPACE -->
     <section class="section-block reveal" id="space">
       <div class="section-top">
         <div>
           <div class="section-code">Section-03 / Space</div>
           <h2 class="section-title">Studio & Event Space</h2>
         </div>
-        <p class="section-copy">
-          店內照片與環境。
-        </p>
+        <p class="section-copy">刺青工作室以外，也是一個文化空間。</p>
       </div>
-
       <div class="space-grid">
-        <article class="space-card">
-          <img src="img/2f3.jpg" alt="2F studio space">
+        <article class="space-card" onclick="openLightbox('img/2f1.jpg','2F 刺青工作室')">
+          <img src="img/2f1.jpg" alt="2F studio">
           <div class="space-meta">
-            <strong>2F Studio Floor</strong>
-            <span>工作台、等待區、玩具、收藏等店內日常</span>
+            <strong>2F · Tattoo Studio</strong>
+            <span>專業刺青工作室，復古玩具收藏，等待區</span>
           </div>
         </article>
-
-        <article class="space-card">
+        <article class="space-card" onclick="openLightbox('img/3f1.jpg','3F 草地活動空間')">
           <img src="img/3f1.jpg" alt="3F event space">
           <div class="space-meta">
-            <strong>3F Grass Space</strong>
-            <span>半室內草地活動空間 / 品牌合作 / 聚會 / 放映</span>
+            <strong>3F · Grass Event Space</strong>
+            <span>半室內草地空間，活動、放映、品牌合作</span>
           </div>
         </article>
       </div>
-
       <div class="info-grid">
         <section class="contact-card">
           <div class="card-label">2F / Tattoo & Piercing</div>
           <h3>Store Floor</h3>
-          <p>
-            獨特的空間感。
-          </p>
+          <p>復古玩具與刺青共存的空間。店內收藏 cult 片影碟，可預約看片。</p>
           <div class="pill-row">
             <span class="pill">Tattoo</span>
             <span class="pill">Piercing</span>
@@ -1004,57 +443,119 @@
             <span class="pill">Shop Life</span>
           </div>
         </section>
-
         <section class="contact-card">
           <div class="card-label">3F / Culture & Collaboration</div>
           <h3>Event Space</h3>
-          <p>
-            品牌合作、活動企劃與場地租用。小型聚會、放映、合作活動。
-          </p>
-
+          <p>半室內草地空間，適合品牌合作、小型聚會、市集、活動策劃。</p>
           <div class="movie-strip">
             <h4>Monthly Cult Movie Night</h4>
-            <p>每月固定放 cult 片的活動，節目表、活動頁或報名入口待更新。</p>
+            <p>每月不定期放映 cult 片，詳情請追蹤官方 IG。</p>
           </div>
         </section>
       </div>
     </section>
 
+    <!-- FAQ -->
+    <section class="section-block reveal" id="faq">
+      <div class="section-top">
+        <div>
+          <div class="section-code">Section-04 / FAQ</div>
+          <h2 class="section-title">常見問題</h2>
+        </div>
+        <p class="section-copy">有其他問題歡迎直接私訊官方 IG。</p>
+      </div>
+      <div class="faq-grid">
+
+        <div class="faq-item">
+          <button class="faq-q" onclick="toggleFaq(this)">如何預約？<span class="chevron">+</span></button>
+          <div class="faq-a"><div class="faq-a-inner">私訊官方 IG <strong>@counter_9_tattoo</strong> 或直接私訊各刺青師帳號。</div></div>
+        </div>
+
+        <div class="faq-item">
+          <button class="faq-q" onclick="toggleFaq(this)">預約需要提供哪些資訊？<span class="chevron">+</span></button>
+          <div class="faq-a"><div class="faq-a-inner">請先思考好圖形、風格、刺青部位、大小。有參考圖片更好。</div></div>
+        </div>
+
+        <div class="faq-item">
+          <button class="faq-q" onclick="toggleFaq(this)">是否接受臨時預約？<span class="chevron">+</span></button>
+          <div class="faq-a"><div class="faq-a-inner">如有臨時預約需求，歡迎私訊官方 IG，我們會安排當日有空檔的刺青師。</div></div>
+        </div>
+
+        <div class="faq-item">
+          <button class="faq-q" onclick="toggleFaq(this)">可以帶參考圖嗎？會完全照圖做嗎？<span class="chevron">+</span></button>
+          <div class="faq-a"><div class="faq-a-inner">可以且鼓勵帶參考圖。但會按各刺青師風格，在客人需求範圍內進行調整，不會 100% 複製他人作品。</div></div>
+        </div>
+
+        <div class="faq-item">
+          <button class="faq-q" onclick="toggleFaq(this)">可以客製設計嗎？<span class="chevron">+</span></button>
+          <div class="faq-a"><div class="faq-a-inner">歡迎客製設計。圖稿會在確定施作日期、刺青前三天與客人對稿確認。</div></div>
+        </div>
+
+        <div class="faq-item">
+          <button class="faq-q" onclick="toggleFaq(this)">價格如何計算？有最低消費嗎？<span class="chevron">+</span></button>
+          <div class="faq-a"><div class="faq-a-inner">依圖案複雜度、面積、部位而定。店內基本開針費為 NT$2,000。大面積作品可按小時計費，詳細報價請洽各刺青師。</div></div>
+        </div>
+
+        <div class="faq-item">
+          <button class="faq-q" onclick="toggleFaq(this)">需要付訂金嗎？<span class="chevron">+</span></button>
+          <div class="faq-a"><div class="faq-a-inner">確定預約日期，或需要刺青師先出客製圖稿，均需收取訂金後安排。</div></div>
+        </div>
+
+        <div class="faq-item">
+          <button class="faq-q" onclick="toggleFaq(this)">可以分次付款嗎？<span class="chevron">+</span></button>
+          <div class="faq-a"><div class="faq-a-inner">如刺青範圍較大需分趟完成，可按進度或趟數付款。</div></div>
+        </div>
+
+        <div class="faq-item">
+          <button class="faq-q" onclick="toggleFaq(this)">可以指定刺青師嗎？<span class="chevron">+</span></button>
+          <div class="faq-a"><div class="faq-a-inner">可以。預約時說明希望的風格或直接指定刺青師帳號私訊即可。</div></div>
+        </div>
+
+        <div class="faq-item">
+          <button class="faq-q" onclick="toggleFaq(this)">可以蓋掉舊刺青或補色嗎？<span class="chevron">+</span></button>
+          <div class="faq-a"><div class="faq-a-inner">可以。請私訊附上舊刺青照片，由刺青師評估後報價。</div></div>
+        </div>
+
+        <div class="faq-item">
+          <button class="faq-q" onclick="toggleFaq(this)">刺青前需要注意什麼？<span class="chevron">+</span></button>
+          <div class="faq-a"><div class="faq-a-inner">請詳情私訊詢問，刺青師會在預約確認時說明注意事項。</div></div>
+        </div>
+
+        <div class="faq-item">
+          <button class="faq-q" onclick="toggleFaq(this)">有年齡限制嗎？<span class="chevron">+</span></button>
+          <div class="faq-a"><div class="faq-a-inner">未成年需家長陪同並簽署同意書。詳情請私訊詢問。</div></div>
+        </div>
+
+      </div>
+    </section>
+
+    <!-- CONTACT -->
     <section class="section-block reveal" id="contact">
       <div class="section-top">
         <div>
-          <div class="section-code">Section-04 / Contact</div>
+          <div class="section-code">Section-05 / Contact</div>
           <h2 class="section-title">Book / Contact / Visit</h2>
         </div>
-        <p class="section-copy">
-          LINE、表單、Google Maps待更新。
-        </p>
+        <p class="section-copy">私訊官方 IG 或各刺青師帳號預約。</p>
       </div>
-
       <div class="info-grid">
         <section class="contact-card">
           <div class="card-label">Studio Contact</div>
           <h3>Counter 9 Tattoo</h3>
-
           <div class="contact-list">
             <div class="contact-item">
               <strong>Instagram</strong>
-              <span>@counter_9_tattoo</span>
+              <a href="https://www.instagram.com/counter_9_tattoo/" target="_blank">@counter_9_tattoo</a>
             </div>
             <div class="contact-item">
               <strong>Address</strong>
-              <span>242 新北市新莊區西盛街 441 號 2F</span>
+              <span>新北市新莊區西盛街 441 號 2F</span>
             </div>
             <div class="contact-item">
-              <strong>Type</strong>
-              <span>刺青店</span>
-            </div>
-            <div class="contact-item">
-              <strong>City</strong>
-              <span>Taipei, Taiwan</span>
+              <strong>Google Maps</strong>
+              <a href="https://share.google/MJEUCnfQ6ItuLbtBF" target="_blank">導航至此</a>
             </div>
           </div>
-
           <div class="cta-row">
             <a class="btn primary" href="https://www.instagram.com/counter_9_tattoo/" target="_blank" rel="noreferrer">Studio Instagram</a>
           </div>
@@ -1062,85 +563,80 @@
 
         <section class="contact-card">
           <div class="card-label">Artist Accounts</div>
-          <h3>Artist IG</h3>
-
+          <h3>直接找刺青師</h3>
           <div class="contact-list">
-            <div class="contact-item"><strong>Ant</strong><span>@ant_tattooer</span></div>
-            <div class="contact-item"><strong>Sunny</strong><span>@sunnii36</span></div>
-            <div class="contact-item"><strong>Hundred</strong><span>@houiooiooo</span></div>
-            <div class="contact-item"><strong>Vinn</strong><span>@vinn_yo1923</span></div>
-          </div>
-
-          <div class="pill-row">
-            <span class="pill">GitHub Ready</span>
-            <span class="pill">site / img</span>
-            <span class="pill">Local Image Path</span>
+            <div class="contact-item">
+              <strong>蟻太 · 美式</strong>
+              <a href="https://www.instagram.com/ant_tattooer/" target="_blank">@ant_tattooer</a>
+            </div>
+            <div class="contact-item">
+              <strong>Sunny · 寫實</strong>
+              <a href="https://www.instagram.com/sunnii36/" target="_blank">@sunnii36</a>
+            </div>
+            <div class="contact-item">
+              <strong>Hundred · 水墨</strong>
+              <a href="https://www.instagram.com/houiooiooo/" target="_blank">@houiooiooo</a>
+            </div>
+            <div class="contact-item">
+              <strong>Vinn · 插畫</strong>
+              <a href="https://www.instagram.com/vinn_yo1923/" target="_blank">@vinn_yo1923</a>
+            </div>
           </div>
         </section>
       </div>
     </section>
+
   </div>
 
   <footer>
-    <div class="wrap">Counter 9 Tattoo Studio / Homepage Prototype / American Tattoo × Vintage Toys × Cult Film Space</div>
+    <div class="wrap">
+      <div class="footer-left">© 2025 Counter 9 Tattoo 九號櫃檯 · 新北市新莊</div>
+      <div class="footer-right">
+        <a href="https://www.instagram.com/counter_9_tattoo/" target="_blank">Instagram</a>
+        <a href="#faq">FAQ</a>
+        <a href="#contact">Contact</a>
+      </div>
+    </div>
   </footer>
 
   <script>
+    // Reveal on scroll
     const reveals = document.querySelectorAll('.reveal');
     const observer = new IntersectionObserver((entries) => {
       entries.forEach(entry => {
-        if(entry.isIntersecting){
-          entry.target.classList.add('visible');
-        }
+        if(entry.isIntersecting) entry.target.classList.add('visible');
       });
-    }, { threshold: 0.12 });
-
+    }, { threshold: 0.08 });
     reveals.forEach(el => observer.observe(el));
 
-    function openLightbox(src, alt = "") {
-      const box = document.getElementById("lightbox");
-      const img = document.getElementById("lightbox-img");
+    // Lightbox
+    function openLightbox(src, alt) {
+      const box = document.getElementById('lightbox');
+      const img = document.getElementById('lightbox-img');
       img.src = src;
-      img.alt = alt || "放大圖片";
-      box.classList.add("open");
-      box.setAttribute("aria-hidden", "false");
-      document.body.style.overflow = "hidden";
+      img.alt = alt || '放大圖片';
+      box.classList.add('open');
+      box.setAttribute('aria-hidden','false');
+      document.body.style.overflow = 'hidden';
     }
-
     function closeLightbox() {
-      const box = document.getElementById("lightbox");
-      const img = document.getElementById("lightbox-img");
-      box.classList.remove("open");
-      box.setAttribute("aria-hidden", "true");
-      document.body.style.overflow = "";
-      img.src = "";
+      const box = document.getElementById('lightbox');
+      box.classList.remove('open');
+      box.setAttribute('aria-hidden','true');
+      document.body.style.overflow = '';
+      document.getElementById('lightbox-img').src = '';
     }
+    document.getElementById('lightbox').addEventListener('click', closeLightbox);
+    document.getElementById('lightbox-img').addEventListener('click', e => e.stopPropagation());
+    document.addEventListener('keydown', e => { if(e.key === 'Escape') closeLightbox(); });
 
-    window.addEventListener("DOMContentLoaded", function() {
-      const workImages = document.querySelectorAll(".work-card img");
-      const lightbox = document.getElementById("lightbox");
-      const lightboxImg = document.getElementById("lightbox-img");
-
-      workImages.forEach(img => {
-        img.addEventListener("click", function() {
-          openLightbox(this.src, this.alt);
-        });
-      });
-
-      lightbox.addEventListener("click", function() {
-        closeLightbox();
-      });
-
-      lightboxImg.addEventListener("click", function(e) {
-        e.stopPropagation();
-      });
-
-      document.addEventListener("keydown", function(e) {
-        if (e.key === "Escape") {
-          closeLightbox();
-        }
-      });
-    });
+    // FAQ accordion
+    function toggleFaq(btn) {
+      const item = btn.parentElement;
+      const isOpen = item.classList.contains('open');
+      document.querySelectorAll('.faq-item.open').forEach(el => el.classList.remove('open'));
+      if(!isOpen) item.classList.add('open');
+    }
   </script>
 </body>
 </html>
